@@ -76,11 +76,14 @@ jobs:
           ls -R
 
       - name: Deploy with kubectl
-        run: |
-          kubectl apply -f postgres/deployment.yaml
-          kubectl apply -f postgres/service.yaml
-          kubectl apply -f backend/deployment.yaml
-          kubectl apply -f backend/service.yaml
-          kubectl apply -f frontend/deployment.yaml
-          kubectl apply -f frontend/service.yaml
-          kubectl apply -f ingress/ingress.yaml
+        run: 
+          kubectl apply -f config/configmap.yml
+          kubectl apply -f config/secret.yml
+          kubectl apply -f config/frontend-config.yml
+          kubectl apply -f postgres/deployment.yml
+          kubectl apply -f postgres/service.yml
+          kubectl apply -f backend/deployment.yml
+          kubectl apply -f backend/service.yml
+          kubectl apply -f frontend/deployment.yml
+          kubectl apply -f frontend/service.yml
+          kubectl apply -f ingress/ingress.yml
