@@ -72,9 +72,6 @@ jobs:
 
       - name: Deploy with kubectl
         run: |
-          kubectl apply -f config/configmap.yaml
-          kubectl apply -f config/secret.yaml
-          kubectl apply -f config/frontend-config.yaml
           kubectl apply -f postgres/deployment.yaml
           kubectl apply -f postgres/service.yaml
           kubectl apply -f backend/deployment.yaml
