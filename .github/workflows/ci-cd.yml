@@ -76,7 +76,7 @@ jobs:
           ls -R
 
       - name: Deploy with kubectl
-        run: 
+        run: |
           kubectl apply -f config/configmap.yml
           kubectl apply -f config/secret.yml
           kubectl apply -f config/frontend-config.yml
