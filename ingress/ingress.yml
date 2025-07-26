@@ -3,16 +3,13 @@ kind: Ingress
 metadata:
   name: webapp-ingress
   annotations:
-    cert-manager.io/cluster-issuer: selfsigned-issuer
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+    kubernetes.io/ingress.class: alb
 spec:
-  ingressClassName: nginx
-  tls:
-    - hosts:
-        - postapp.local
-      secretName: postapp-tls
   rules:
-    - host: postapp.local
-      http:
+    - http:
         paths:
           - path: /api
             pathType: Prefix
